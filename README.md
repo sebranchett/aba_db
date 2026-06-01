@@ -130,4 +130,4 @@ You need the "Database Toolbox" Add-On and a [JDBC driver](https://nl.mathworks.
 > ```
 
 ## Examples
-The 4 MATLAB files in this repository were created with a lot of AI assistance. They demonstrate how to load spoortak data and dataset gps data into their respective tables and how to search these two tables.
+The 5 MATLAB files in this repository were created with a lot of AI assistance. They demonstrate how to load, check and search spoortak data and how to load and search gps data.
