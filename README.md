@@ -134,4 +134,4 @@ You need the "Database Toolbox" Add-On and a [JDBC driver](https://nl.mathworks.
 > ```
 
 ## Examples
-The 6 MATLAB files in this repository were created with a lot of AI assistance. They demonstrate how to load, check and search spoortak data and how to load and search gps data. `close.m` demonstrates how to find spoortakken from version 25 that are close to or overlap spoortakken from version 25.
+The 6 MATLAB files in this repository were created with a lot of AI assistance. They demonstrate how to load, check and search spoortak data and how to load and search gps data. `close.m` demonstrates how to find spoortakken from version 25 that are close to or overlap spoortakken from version 24.
