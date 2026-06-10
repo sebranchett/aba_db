@@ -56,7 +56,7 @@ CREATE EXTENSION postgis_tiger_geocoder;
 -- list installed extensions
 \dx
 
--- Create the table to store spoortaks
+-- Create the table to store spoortakken
 CREATE TABLE spoortak_traces (
     id SERIAL PRIMARY KEY,
     spoortak_version VARCHAR(100),
@@ -73,6 +73,16 @@ CREATE TABLE gps_traces (
 
 -- list tables
 \dt
+
+-- speed up geography searches by creating indexes
+CREATE INDEX spoortak_geog_idx ON spoortak_traces USING GIST ((geom::geography));
+CREATE INDEX gps_traces_geog_idx ON gps_traces USING GIST ((geom::geography));
+
+-- show indexes
+\d spoortak_traces
+\d gps_traces
+-- to remove index:
+-- DROP INDEX spoortak_geog_idx;
 
 -- quit psql
 \q
@@ -91,13 +101,7 @@ SELECT * FROM spoortak_traces;
 -- show count of entries
 SELECT count(*) AS exampt_count FROM spoortak_traces;
 
--- you can speed up geography searches by creating an index
-CREATE INDEX spoortak_geog_idx ON spoortak_traces USING GIST ((geom::geography));
-
--- can now see extra index
-\d spoortak_traces
-
--- sort spoortaks on distance from CiTG
+-- sort spoortakken on distance from CiTG
 SELECT spoortak_name, ST_Distance(geom::geography, ST_MakePoint(4.3755, 51.9988)::geography) AS dist_meters
 FROM spoortak_traces
 WHERE ST_DWithin(
@@ -107,7 +111,7 @@ WHERE ST_DWithin(
 )
 ORDER BY dist_meters;
 
--- find 10 closest spoortaks to CiTG
+-- find 10 closest spoortakken to CiTG
 SELECT spoortak_name, ST_Distance(geom::geography, ST_MakePoint(4.3755, 51.9988)::geography) AS dist_meters
 FROM spoortak_traces
 ORDER BY dist_meters
