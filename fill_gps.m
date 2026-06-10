@@ -28,7 +28,7 @@ end
 startIndex = 1;
 endIndex = 1;
 % loop over all files of the format _*_gps_*.DAT in a folder
-folder = "<folder_name.";  % folder to search (string or char)
+folder = "<folder_name>";  % folder to search (string or char)
 pattern = "_*_gps_*.DAT";                    % filename pattern
 files = dir(fullfile(folder, pattern));      % returns struct array
 
